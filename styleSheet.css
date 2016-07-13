@@ -1,0 +1,520 @@
+
+input.InputExtensionSelectorMA {
+  direction: ltr;
+}
+.InputExtensionSelectorMA {
+  display: block;
+  width: 274px !important;
+  height: 25px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background: #ffffff none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  font-family: Tahoma;
+}
+
+.InputExtensionSelectorMA:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.InputExtensionSelectorMA:-moz-placeholder {
+  color: #999999;
+}
+
+.InputExtensionSelectorMA::-moz-placeholder {
+  color: #999999;
+}
+
+.InputExtensionSelectorMA:-ms-input-placeholder {
+  color: #999999;
+}
+
+.InputExtensionSelectorMA::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.InputExtensionSelectorMA[disabled],
+.InputExtensionSelectorMA[readonly],
+fieldset[disabled] .InputExtensionSelectorMA {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+
+textarea.InputExtensionSelectorMA {
+  height: auto;
+}
+
+
+.DivButtonExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 60px; display: inline-block; margin: 0; padding: 0 !important;
+}
+.DivAddRemoveExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 50px; display: inline-block; margin: 0; padding: 0 !important;
+}
+.DivTestSelectorExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 50px; display: inline-block; margin: 0; padding: 0 !important;
+}
+.DivInputExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 300px; display: inline-block; margin: 0; padding: 0
+}
+.ChangeSelectorExtensionSelectorMA{
+  padding: 5px; margin: 5px; font-size: 15px; cursor: pointer;
+}
+.NextChangeSelectorExtensionSelectorMA{
+  color: green;
+}
+.UndoChangeSelectorExtensionSelectorMA{
+  color: blue;
+}
+.BackChangeSelectorExtensionSelectorMA{
+  color: red;
+}
+
+.DivSpanExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 86px; display: inline-block; margin: 0; padding: 0
+}
+
+.DivExtractExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 30px; display: inline-block; margin: 0; padding: 0
+}
+
+
+.DivRowExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 100%; text-align: center; margin-top: 10px
+}
+
+.DivExtensionSelectorMA{
+  font-family: Tahoma;  color: black;font-size: 11px;  width: 100%; text-align: center
+}
+
+.ChangeFloatExtensionSelectorMA{
+  top: 5px; cursor: pointer; display: inline-block; width: 7%;
+}
+
+.CloseExtensionSelectorMA{
+  display: inline-block; top: 5px; cursor: pointer; width: 7%;
+}
+
+.SelectExtractTypeExtensionSelectorMA{
+  display: inline-block; top: 5px; width: 86%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.SettingDivExtensionSelectorMA{
+  width: 100%;
+}
+
+.FixDivExtensionSelectorMA{
+  position: fixed; top: 0; z-index: 100000000;
+  font-family: Tahoma;  color: black;  width: 600px; direction: rtl; padding: 0 0 30px 0; font-size: 20px;
+  background-color: #eeeeee; display: none;
+}
+
+.RightFixDivExtensionSelectorMA{
+  right: 0;
+}
+
+.ButtonCloseExtensionSelectorMA{
+  width: 42px; height: 34px; position: fixed; z-index: 10000000000; top: 0;
+}
+
+.RightButtonCloseExtensionSelectorMA{
+  right: 0;
+}
+
+.LeftButtonCloseExtensionSelectorMA{
+  left: 0;
+}
+
+.LeftFixDivExtensionSelectorMA{
+  left: 0;
+}
+
+
+.BorderInspectExtensionSelectorMA{background-color: #00ff00 !important;}
+.ExcludeBorderInspectExtensionSelectorMA{background-color: #ff0000 !important;}
+.ImageBorderInspectExtensionSelectorMA{opacity: 0.2;}
+
+.ButtonExtensionSelectorMA {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.ButtonExtensionSelectorMA:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.ButtonExtensionSelectorMA:hover,
+.ButtonExtensionSelectorMA:focus {
+  color: #333333;
+  text-decoration: none;
+}
+
+.ButtonExtensionSelectorMA:active,
+.ButtonExtensionSelectorMA.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.ButtonExtensionSelectorMA.disabled,
+.ButtonExtensionSelectorMA[disabled],
+fieldset[disabled] .ButtonExtensionSelectorMA {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ButtonExtensionSelectorMA-default {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+
+.ButtonExtensionSelectorMA-default:hover,
+.ButtonExtensionSelectorMA-default:focus,
+.ButtonExtensionSelectorMA-default:active,
+.ButtonExtensionSelectorMA-default.active,
+.open .dropdown-toggle.ButtonExtensionSelectorMA-default {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.ButtonExtensionSelectorMA-default:active,
+.ButtonExtensionSelectorMA-default.active,
+.open .dropdown-toggle.ButtonExtensionSelectorMA-default {
+  background-image: none;
+}
+
+.ButtonExtensionSelectorMA-default.disabled,
+.ButtonExtensionSelectorMA-default[disabled],
+fieldset[disabled] .ButtonExtensionSelectorMA-default,
+.ButtonExtensionSelectorMA-default.disabled:hover,
+.ButtonExtensionSelectorMA-default[disabled]:hover,
+fieldset[disabled] .ButtonExtensionSelectorMA-default:hover,
+.ButtonExtensionSelectorMA-default.disabled:focus,
+.ButtonExtensionSelectorMA-default[disabled]:focus,
+fieldset[disabled] .ButtonExtensionSelectorMA-default:focus,
+.ButtonExtensionSelectorMA-default.disabled:active,
+.ButtonExtensionSelectorMA-default[disabled]:active,
+fieldset[disabled] .ButtonExtensionSelectorMA-default:active,
+.ButtonExtensionSelectorMA-default.disabled.active,
+.ButtonExtensionSelectorMA-default[disabled].active,
+fieldset[disabled] .ButtonExtensionSelectorMA-default.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+
+.ButtonExtensionSelectorMA-primary {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.ButtonExtensionSelectorMA-primary:hover,
+.ButtonExtensionSelectorMA-primary:focus,
+.ButtonExtensionSelectorMA-primary:active,
+.ButtonExtensionSelectorMA-primary.active,
+.open .dropdown-toggle.ButtonExtensionSelectorMA-primary {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+.ButtonExtensionSelectorMA-primary:active,
+.ButtonExtensionSelectorMA-primary.active,
+.open .dropdown-toggle.ButtonExtensionSelectorMA-primary {
+  background-image: none;
+}
+
+.ButtonExtensionSelectorMA-primary.disabled,
+.ButtonExtensionSelectorMA-primary[disabled],
+fieldset[disabled] .ButtonExtensionSelectorMA-primary,
+.ButtonExtensionSelectorMA-primary.disabled:hover,
+.ButtonExtensionSelectorMA-primary[disabled]:hover,
+fieldset[disabled] .ButtonExtensionSelectorMA-primary:hover,
+.ButtonExtensionSelectorMA-primary.disabled:focus,
+.ButtonExtensionSelectorMA-primary[disabled]:focus,
+fieldset[disabled] .ButtonExtensionSelectorMA-primary:focus,
+.ButtonExtensionSelectorMA-primary.disabled:active,
+.ButtonExtensionSelectorMA-primary[disabled]:active,
+fieldset[disabled] .ButtonExtensionSelectorMA-primary:active,
+.ButtonExtensionSelectorMA-primary.disabled.active,
+.ButtonExtensionSelectorMA-primary[disabled].active,
+fieldset[disabled] .ButtonExtensionSelectorMA-primary.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.ButtonExtensionSelectorMA-warning {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.ButtonExtensionSelectorMA-warning:hover,
+.ButtonExtensionSelectorMA-warning:focus,
+.ButtonExtensionSelectorMA-warning:active,
+.ButtonExtensionSelectorMA-warning.active,
+.open .dropdown-toggle.ButtonExtensionSelectorMA-warning {
+  color: #ffffff;
+  background-color: #ed9c28;
+  border-color: #d58512;
+}
+
+.ButtonExtensionSelectorMA-warning:active,
+.ButtonExtensionSelectorMA-warning.active,
+.open .dropdown-toggle.ButtonExtensionSelectorMA-warning {
+  background-image: none;
+}
+
+.ButtonExtensionSelectorMA-warning.disabled,
+.ButtonExtensionSelectorMA-warning[disabled],
+fieldset[disabled] .ButtonExtensionSelectorMA-warning,
+.ButtonExtensionSelectorMA-warning.disabled:hover,
+.ButtonExtensionSelectorMA-warning[disabled]:hover,
+fieldset[disabled] .ButtonExtensionSelectorMA-warning:hover,
+.ButtonExtensionSelectorMA-warning.disabled:focus,
+.ButtonExtensionSelectorMA-warning[disabled]:focus,
+fieldset[disabled] .ButtonExtensionSelectorMA-warning:focus,
+.ButtonExtensionSelectorMA-warning.disabled:active,
+.ButtonExtensionSelectorMA-warning[disabled]:active,
+fieldset[disabled] .ButtonExtensionSelectorMA-warning:active,
+.ButtonExtensionSelectorMA-warning.disabled.active,
+.ButtonExtensionSelectorMA-warning[disabled].active,
+fieldset[disabled] .ButtonExtensionSelectorMA-warning.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.ButtonDangerExtensionSelectorMA {
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.ButtonDangerExtensionSelectorMA:hover,
+.ButtonDangerExtensionSelectorMA:focus,
+.ButtonDangerExtensionSelectorMA:active,
+.ButtonDangerExtensionSelectorMA.active,
+.open .dropdown-toggle.ButtonDangerExtensionSelectorMA {
+  color: #ffffff;
+  background-color: #d2322d;
+  border-color: #ac2925;
+}
+
+.ButtonDangerExtensionSelectorMA:active,
+.ButtonDangerExtensionSelectorMA.active,
+.open .dropdown-toggle.ButtonDangerExtensionSelectorMA {
+  background-image: none;
+}
+
+.ButtonDangerExtensionSelectorMA.disabled,
+.ButtonDangerExtensionSelectorMA[disabled],
+fieldset[disabled] .ButtonDangerExtensionSelectorMA,
+.ButtonDangerExtensionSelectorMA.disabled:hover,
+.ButtonDangerExtensionSelectorMA[disabled]:hover,
+fieldset[disabled] .ButtonDangerExtensionSelectorMA:hover,
+.ButtonDangerExtensionSelectorMA.disabled:focus,
+.ButtonDangerExtensionSelectorMA[disabled]:focus,
+fieldset[disabled] .ButtonDangerExtensionSelectorMA:focus,
+.ButtonDangerExtensionSelectorMA.disabled:active,
+.ButtonDangerExtensionSelectorMA[disabled]:active,
+fieldset[disabled] .ButtonDangerExtensionSelectorMA:active,
+.ButtonDangerExtensionSelectorMA.disabled.active,
+.ButtonDangerExtensionSelectorMA[disabled].active,
+fieldset[disabled] .ButtonDangerExtensionSelectorMA.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.ButtonSuccessExtensionSelectorMA {
+  color: #ffffff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.ButtonSuccessExtensionSelectorMA:hover,
+.ButtonSuccessExtensionSelectorMA:focus,
+.ButtonSuccessExtensionSelectorMA:active,
+.ButtonSuccessExtensionSelectorMA.active,
+.open .dropdown-toggle.ButtonSuccessExtensionSelectorMA {
+  color: #ffffff;
+  background-color: #47a447;
+  border-color: #398439;
+}
+
+.ButtonSuccessExtensionSelectorMA:active,
+.ButtonSuccessExtensionSelectorMA.active,
+.open .dropdown-toggle.ButtonSuccessExtensionSelectorMA {
+  background-image: none;
+}
+
+.ButtonSuccessExtensionSelectorMA.disabled,
+.ButtonSuccessExtensionSelectorMA[disabled],
+fieldset[disabled] .ButtonSuccessExtensionSelectorMA,
+.ButtonSuccessExtensionSelectorMA.disabled:hover,
+.ButtonSuccessExtensionSelectorMA[disabled]:hover,
+fieldset[disabled] .ButtonSuccessExtensionSelectorMA:hover,
+.ButtonSuccessExtensionSelectorMA.disabled:focus,
+.ButtonSuccessExtensionSelectorMA[disabled]:focus,
+fieldset[disabled] .ButtonSuccessExtensionSelectorMA:focus,
+.ButtonSuccessExtensionSelectorMA.disabled:active,
+.ButtonSuccessExtensionSelectorMA[disabled]:active,
+fieldset[disabled] .ButtonSuccessExtensionSelectorMA:active,
+.ButtonSuccessExtensionSelectorMA.disabled.active,
+.ButtonSuccessExtensionSelectorMA[disabled].active,
+fieldset[disabled] .ButtonSuccessExtensionSelectorMA.active {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.ButtonInfoExtensionSelectorMA {
+  color: #ffffff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.ButtonInfoExtensionSelectorMA:hover,
+.ButtonInfoExtensionSelectorMA:focus,
+.ButtonInfoExtensionSelectorMA:active,
+.ButtonInfoExtensionSelectorMA.active,
+.open .dropdown-toggle.ButtonInfoExtensionSelectorMA {
+  color: #ffffff;
+  background-color: #39b3d7;
+  border-color: #269abc;
+}
+
+.ButtonInfoExtensionSelectorMA:active,
+.ButtonInfoExtensionSelectorMA.active,
+.open .dropdown-toggle.ButtonInfoExtensionSelectorMA {
+  background-image: none;
+}
+
+.ButtonInfoExtensionSelectorMA.disabled,
+.ButtonInfoExtensionSelectorMA[disabled],
+fieldset[disabled] .ButtonInfoExtensionSelectorMA,
+.ButtonInfoExtensionSelectorMA.disabled:hover,
+.ButtonInfoExtensionSelectorMA[disabled]:hover,
+fieldset[disabled] .ButtonInfoExtensionSelectorMA:hover,
+.ButtonInfoExtensionSelectorMA.disabled:focus,
+.ButtonInfoExtensionSelectorMA[disabled]:focus,
+fieldset[disabled] .ButtonInfoExtensionSelectorMA:focus,
+.ButtonInfoExtensionSelectorMA.disabled:active,
+.ButtonInfoExtensionSelectorMA[disabled]:active,
+fieldset[disabled] .ButtonInfoExtensionSelectorMA:active,
+.ButtonInfoExtensionSelectorMA.disabled.active,
+.ButtonInfoExtensionSelectorMA[disabled].active,
+fieldset[disabled] .ButtonInfoExtensionSelectorMA.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.ButtonExtensionSelectorMA-link {
+  font-weight: normal;
+  color: #428bca;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.ButtonExtensionSelectorMA-link,
+.ButtonExtensionSelectorMA-link:active,
+.ButtonExtensionSelectorMA-link[disabled],
+fieldset[disabled] .ButtonExtensionSelectorMA-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ButtonExtensionSelectorMA-link,
+.ButtonExtensionSelectorMA-link:hover,
+.ButtonExtensionSelectorMA-link:focus,
+.ButtonExtensionSelectorMA-link:active {
+  border-color: transparent;
+}
+
+.ButtonExtensionSelectorMA-link:hover,
+.ButtonExtensionSelectorMA-link:focus {
+  color: #2a6496;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.ButtonExtensionSelectorMA-link[disabled]:hover,
+fieldset[disabled] .ButtonExtensionSelectorMA-link:hover,
+.ButtonExtensionSelectorMA-link[disabled]:focus,
+fieldset[disabled] .ButtonExtensionSelectorMA-link:focus {
+  color: #999999;
+  text-decoration: none;
+}
+
+.ButtonExtensionSelectorMA-lg {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.ButtonExtensionSelectorMA-sm,
+.ButtonExtensionSelectorMA-xs {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.ButtonExtensionSelectorMA-xs {
+  padding: 1px 5px;
+}
+
+.ButtonExtensionSelectorMA-block {
+  display: block;
+  width: 70%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ButtonExtensionSelectorMA-block + .ButtonExtensionSelectorMA-block {
+  margin-top: 5px;
+}
+
+input[type="submit"].ButtonExtensionSelectorMA-block,
+input[type="reset"].ButtonExtensionSelectorMA-block,
+input[type="button"].ButtonExtensionSelectorMA-block {
+  width: 100%;
+}

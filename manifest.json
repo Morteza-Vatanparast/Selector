@@ -1,0 +1,13 @@
+{
+  "name":"Inject DOM",
+  "description":"http://stackoverflow.com/questions/14068879",
+  "version":"1",
+  "manifest_version":2,
+  "content_scripts": [
+    {
+      "js": [ "jquery.min.js", "myscript.js"],
+      "css": ["styleSheet.css"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ]
+}
