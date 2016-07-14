@@ -409,14 +409,21 @@ $(document).on('click', function(e) {
             var _id = node[0].id;
 
             var parent = node.parent();
+            var __nth_of_type__ = false;
             _class = _class.replace(/ /g, '.').replace(".BorderInspectExtensionSelectorMA", "").replace("BorderInspectExtensionSelectorMA", "");
             if (_class == "" && _id == "") {
                 var sameTagSiblings = parent.children(name);
+                var __nth_of_type = 1;
                 if (sameTagSiblings.length > 1) {
                     var allSiblings = parent.children();
-                    var index = allSiblings.index(realNode) + 1;
-                    if (index > 1) {
-                        name += ':nth-child(' + index + ')';
+                    for(var __i = 0; __i < allSiblings.length ; __i++){
+                        if(allSiblings[__i] == realNode){
+                            __nth_of_type = __i + 1;
+                        }
+                    }
+                    if (__nth_of_type > 1) {
+                        __nth_of_type__ = true;
+                        name += ':nth-of-type(' + __nth_of_type + ')';
                     }
                 }
             }else{
@@ -428,7 +435,11 @@ $(document).on('click', function(e) {
                     name += '.' + _class;
                 }
             }
-            path = name + (path ? '>' + path : '');
+            if(__nth_of_type__){
+                path = '__<<__' + name + ' ' + (path ? path : '');
+            }else{
+                path = name + (path ? '>' + path : '');
+            }
             node = parent;
         }
         var __address = $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val();
@@ -488,22 +499,22 @@ $(document).on('click', '.ButtonCopyJsonAllNewsStylesToClipboard', function(e) {
     var has_summary = $('input.HasExtensionSelectorMA[data-set-type=SUMMARY]').prop('checked');
     var link = "";
     if(!extract_link){
-        link = $("input.InputExtensionSelectorMA[data-set-type=LINK]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ");
+        link = $("input.InputExtensionSelectorMA[data-set-type=LINK]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var thumbnail = "";
     if(!extract_thumbnail){
-        thumbnail = $("input.InputExtensionSelectorMA[data-set-type=THUMBNAIL]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ");
+        thumbnail = $("input.InputExtensionSelectorMA[data-set-type=THUMBNAIL]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var summary = "";
     if(has_summary){
-        summary = $("input.InputExtensionSelectorMA[data-set-type=SUMMARY]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ");
+        summary = $("input.InputExtensionSelectorMA[data-set-type=SUMMARY]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var __json = {
         __type: "AllNews",
-        address: $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " "),
+        address: $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
         link: link,
         thumbnail: thumbnail,
-        title: $("input.InputExtensionSelectorMA[data-set-type=TITLE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " "),
+        title: $("input.InputExtensionSelectorMA[data-set-type=TITLE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
         summary: summary,
         extract_link: extract_link,
         extract_thumbnail: extract_thumbnail,
@@ -518,11 +529,11 @@ $(document).on('click', '.ButtonCopyJsonNewsStylesToClipboard', function(e) {
     var has_image = $('input.HasExtensionSelectorMA[data-set-type=IMAGE]').prop('checked');
     var ro_title = "";
     if(has_ro_title){
-        ro_title = $("input.InputExtensionSelectorMA[data-set-type=ROTITLE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ");
+        ro_title = $("input.InputExtensionSelectorMA[data-set-type=ROTITLE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var image = "";
     if(has_image){
-        image = $("input.InputExtensionSelectorMA[data-set-type=IMAGE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ");
+        image = $("input.InputExtensionSelectorMA[data-set-type=IMAGE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var excludes = [];
     $.each($("input.BodyExcludeInputExtensionSelectorMA"), function(){
@@ -535,11 +546,11 @@ $(document).on('click', '.ButtonCopyJsonNewsStylesToClipboard', function(e) {
         excludes: excludes,
         has_ro_title: has_ro_title,
         has_image: has_image,
-        body: $("input.InputExtensionSelectorMA[data-set-type=BODY]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " "),
-        date: $("input.InputExtensionSelectorMA[data-set-type=DATE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " "),
+        body: $("input.InputExtensionSelectorMA[data-set-type=BODY]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
+        date: $("input.InputExtensionSelectorMA[data-set-type=DATE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
         date_type: $('select.SelectDateFormatExtensionSelectorMA option:selected').attr('data-type'),
-        date_select: $('select.SelectDateFormatExtensionSelectorMA').val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " "),
-        date_type_input: $('input.InputTypeDateFormatExtensionSelectorMA').val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ")
+        date_select: $('select.SelectDateFormatExtensionSelectorMA').val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
+        date_type_input: $('input.InputTypeDateFormatExtensionSelectorMA').val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ")
     };
     $(".InputCopyJsonNewsStylesToClipboard").val(JSON.stringify(__json));
     copy_to_clipboard(document.getElementById('InputCopyJsonNewsStylesToClipboard'));
