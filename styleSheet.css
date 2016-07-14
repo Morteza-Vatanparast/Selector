@@ -143,9 +143,9 @@ textarea.InputExtensionSelectorMA {
 }
 
 
-.BorderInspectExtensionSelectorMA{background-color: #00ff00 !important;}
+.BorderInspectExtensionSelectorMA{background-color: #00ff00 !important; opacity: 0.5;}
 .ExcludeBorderInspectExtensionSelectorMA{background-color: #ff0000 !important;}
-.ImageBorderInspectExtensionSelectorMA{opacity: 0.2;}
+.ImageBorderInspectExtensionSelectorMA{opacity: 0.5;}
 
 .ButtonExtensionSelectorMA {
   display: inline-block;
