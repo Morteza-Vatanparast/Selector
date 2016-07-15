@@ -1,11 +1,9 @@
 function $To$x(el) {
   if (typeof el == "string") return document.evaluate(el, document, null, 0, null);
   if (!el || el.nodeType != 1) return '';
-  if (el.id && $("[id=" + el.id + "]").length == 1) {
-      return '//*[@id="' + el.id + '"]';
-  }
+  if (el.id) return "//*[@id='" + el.id + "']";
   var sames = [].filter.call(el.parentNode.children, function (x) { return x.tagName == el.tagName });
-  return $To$x(el.parentNode) + '/' + (el.tagName.toLowerCase() + (sames.length > 1 ? '['+([].indexOf.call(sames, el)+1)+']' : '').replace('[1]', ''));
+  return $To$x(el.parentNode) + '/' + el.tagName.toLowerCase() + (sames.length > 1 ? '['+([].indexOf.call(sames, el)+1)+']' : '');
 }
 
 function $x(xPath, $scope) {
@@ -56,13 +54,17 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="ADDRESS">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
                             '</div>' +
-                            '<input class="InputExtensionSelectorMA" data-set-type="ADDRESS" data-path="" type="text" >' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
+                            '</div>' +
+                            '<input class="InputExtensionSelectorMA" data-set-type="ADDRESS" type="text" >' +
                         '</div>' +
                         '<div class="DivButtonExtensionSelectorMA">' +
                             '<button class="ButtonExtensionSelectorMA ButtonSuccessExtensionSelectorMA SetButtonExtensionSelectorMA" data-set-type="ADDRESS">set</button>' +
@@ -82,11 +84,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="LINK">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input disabled="disabled" class="InputExtensionSelectorMA" data-set-type="LINK" type="text">' +
                         '</div>' +
@@ -108,11 +114,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="THUMBNAIL">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input disabled="disabled" class="InputExtensionSelectorMA" data-set-type="THUMBNAIL" type="text">' +
                         '</div>' +
@@ -133,11 +143,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="TITLE">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input class="InputExtensionSelectorMA" data-set-type="TITLE" type="text" >' +
                         '</div>' +
@@ -159,11 +173,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="SUMMARY">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input class="InputExtensionSelectorMA" data-set-type="SUMMARY" type="text" >' +
                         '</div>' +
@@ -193,11 +211,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="ROTITLE">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input class="InputExtensionSelectorMA" data-set-type="ROTITLE" type="text" >' +
                         '</div>' +
@@ -219,11 +241,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="IMAGE">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input class="InputExtensionSelectorMA" data-set-type="IMAGE" type="text">' +
                         '</div>' +
@@ -244,11 +270,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="BODY">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input class="InputExtensionSelectorMA" data-set-type="BODY" type="text">' +
                         '</div>' +
@@ -274,11 +304,15 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                         '</div>' +
                         '<div class="DivInputExtensionSelectorMA DivChangeSelectorExtensionSelectorMA" data-set-type="DATE">' +
                             '<div style="display: inline-block; width: 70px; margin:0; padding: 0; float: right">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT">&#8593;</span>' +
-                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK">&#8595;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="START">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="START">&#8595;</span>' +
                             '</div>' +
                             '<div style="display: inline-block; width: 130px; margin:0; padding: 0; text-align: center">' +
-                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO">&#8635;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA UndoChangeSelectorExtensionSelectorMA" data-action="UNDO" data-position="UNDO">&#8635;</span>' +
+                            '</div>' +
+                            '<div style="display: inline-block; width: 100px; margin:0; padding: 0; float: left">' +
+                                '<span class="ChangeSelectorExtensionSelectorMA NextChangeSelectorExtensionSelectorMA" data-action="NEXT" data-position="END">&#8593;</span>' +
+                                '<span class="ChangeSelectorExtensionSelectorMA BackChangeSelectorExtensionSelectorMA" data-action="BACK" data-position="END">&#8595;</span>' +
                             '</div>' +
                             '<input class="InputExtensionSelectorMA" data-set-type="DATE" type="text" >' +
                         '</div>' +
@@ -398,42 +432,78 @@ $(document).on('click', '.SetButtonExtensionSelectorMA.ButtonDangerExtensionSele
     elm.removeClass('ButtonDangerExtensionSelectorMA').addClass('ButtonSuccessExtensionSelectorMA');
 });
 
-function remove_first_bracket(__x){
-    if(__x[0] == '['){
-        var __l_p = __x.split('/');
-        __l_p[0] = "";
-        __x = __l_p.join('/');
-    }
-    return __x
-}
 
-function remove_last_bracket(__x){
-    if(__x[__x.length - 1] == ']'){
-        var __l_p = __x.split('/');
-        var __f_p = __l_p[__l_p.length - 1];
-        __f_p = __f_p.split('[')[0];
-        __l_p[__l_p.length - 1] = __f_p;
-        __x = __l_p.join('/');
-    }
-    return __x
-}
-
-$('*').click(function(e) {
+$(document).on('click', function(e) {
     if(__permission && !$(e.target).closest(".NoExtension").hasClass("NoExtension")){
         e.preventDefault();
-        var path = $To$x(this);
+        var path, node = $(e.target);
+        var __con = true;
+        while (node.length && __con) {
+            var realNode = node[0], name = realNode.localName;
+            if (!name) break;
+            name = name.toLowerCase();
+            var _class = node[0].className;
+            var _id = node[0].id;
+            var __path = "";
+
+            var parent = node.parent();
+            var __nth_of_type__ = false;
+            _class = _class.replace(/ /g, '.').replace(".BorderInspectExtensionSelectorMA", "").replace("BorderInspectExtensionSelectorMA", "");
+            if (_class == "" && _id == "") {
+                var sameTagSiblings = parent.children(name);
+                var __nth_of_type = 1;
+                if (sameTagSiblings.length > 1) {
+                    var allSiblings = parent.children();
+                    for(var __i = 0; __i < allSiblings.length ; __i++){
+                        if(allSiblings[__i] == realNode){
+                            __nth_of_type = __i + 1;
+                        }
+                    }
+                    if (__nth_of_type > 1) {
+                        __nth_of_type__ = true;
+                        name += ':nth-of-type(' + __nth_of_type + ')';
+                    }
+                }
+            }else{
+                if(_id != ""){
+                    name += '#' + _id;
+                    __con = false;
+                }else{
+                    //_class = _class.split('.')[0] ? _class.split('.')[0] : _class;
+                    name += '.' + _class;
+                }
+            }
+            if(__nth_of_type__){
+                path = '__<<__' + name + ' ' + (path ? path : '');
+            }else{
+                path = name + (path ? '>' + path : '');
+            }
+            node = parent;
+        }
         var __address = $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val();
-        if(__set_type == "LINK" || __set_type == "THUMBNAIL" || __set_type == "TITLE" || __set_type == "SUMMARY")
-        {
-            var __path = path.split(__address)[1];
+        if(__set_type == "LINK" || __set_type == "THUMBNAIL" || __set_type == "TITLE" || __set_type == "SUMMARY"){
+            if(__address == path){
+                var __l = __address.split(">");
+                var __a = "";
+                var html = "";
+                for(var i = 0; i < __l.length - 1; i++){
+                    __a = i < __l.length - 2 ? ">" : "";
+                    html += __l[i] + __a;
+                }
+                $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val(html);
+                __address = html;
+            }
+            __path = path.split(__address)[1];
             path = __path ? __path : path;
-            path = remove_first_bracket(path);
-            if(path[0] == '/'){
+            if(path[0] == '>'){
                 path = path.substring(1, path.length);
             }
-        }else if(__set_type == "ADDRESS"){
-            var _path = remove_last_bracket(path);
-            $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val(_path).attr('data-path', path);
+        }
+        __path = path.split("__<<__")[0];
+        alert(__path);
+        path = __path == "" ? path.substring(6, path.length) : path;
+        if(path[0] == '>'){
+            path = path.substring(1, path.length);
         }
         $("input.InputExtensionSelectorMA[data-set-type=" + __set_type + "]").val(path).attr('data-path', path);
         __permission = false;
@@ -473,22 +543,22 @@ $(document).on('click', '.ButtonCopyJsonAllNewsStylesToClipboard', function(e) {
     var has_summary = $('input.HasExtensionSelectorMA[data-set-type=SUMMARY]').prop('checked');
     var link = "";
     if(!extract_link){
-        link = $("input.InputExtensionSelectorMA[data-set-type=LINK]").val();
+        link = $("input.InputExtensionSelectorMA[data-set-type=LINK]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var thumbnail = "";
     if(!extract_thumbnail){
-        thumbnail = $("input.InputExtensionSelectorMA[data-set-type=THUMBNAIL]").val();
+        thumbnail = $("input.InputExtensionSelectorMA[data-set-type=THUMBNAIL]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var summary = "";
     if(has_summary){
-        summary = $("input.InputExtensionSelectorMA[data-set-type=SUMMARY]").val();
+        summary = $("input.InputExtensionSelectorMA[data-set-type=SUMMARY]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var __json = {
         __type: "AllNews",
-        address: $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val(),
+        address: $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
         link: link,
         thumbnail: thumbnail,
-        title: $("input.InputExtensionSelectorMA[data-set-type=TITLE]").val(),
+        title: $("input.InputExtensionSelectorMA[data-set-type=TITLE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
         summary: summary,
         extract_link: extract_link,
         extract_thumbnail: extract_thumbnail,
@@ -503,11 +573,11 @@ $(document).on('click', '.ButtonCopyJsonNewsStylesToClipboard', function(e) {
     var has_image = $('input.HasExtensionSelectorMA[data-set-type=IMAGE]').prop('checked');
     var ro_title = "";
     if(has_ro_title){
-        ro_title = $("input.InputExtensionSelectorMA[data-set-type=ROTITLE]").val();
+        ro_title = $("input.InputExtensionSelectorMA[data-set-type=ROTITLE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var image = "";
     if(has_image){
-        image = $("input.InputExtensionSelectorMA[data-set-type=IMAGE]").val();
+        image = $("input.InputExtensionSelectorMA[data-set-type=IMAGE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ");
     }
     var excludes = [];
     $.each($("input.BodyExcludeInputExtensionSelectorMA"), function(){
@@ -520,11 +590,11 @@ $(document).on('click', '.ButtonCopyJsonNewsStylesToClipboard', function(e) {
         excludes: excludes,
         has_ro_title: has_ro_title,
         has_image: has_image,
-        body: $("input.InputExtensionSelectorMA[data-set-type=BODY]").val(),
-        date: $("input.InputExtensionSelectorMA[data-set-type=DATE]").val(),
+        body: $("input.InputExtensionSelectorMA[data-set-type=BODY]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
+        date: $("input.InputExtensionSelectorMA[data-set-type=DATE]").val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
         date_type: $('select.SelectDateFormatExtensionSelectorMA option:selected').attr('data-type'),
-        date_select: $('select.SelectDateFormatExtensionSelectorMA').val(),
-        date_type_input: $('input.InputTypeDateFormatExtensionSelectorMA').val()
+        date_select: $('select.SelectDateFormatExtensionSelectorMA').val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > "),
+        date_type_input: $('input.InputTypeDateFormatExtensionSelectorMA').val().replace(/nth-child/g, "nth-of-type").replace(/>/g, " ").replace(/__<<__/g, " > ")
     };
     $(".InputCopyJsonNewsStylesToClipboard").val(JSON.stringify(__json));
     copy_to_clipboard(document.getElementById('InputCopyJsonNewsStylesToClipboard'));
@@ -590,14 +660,12 @@ $(document).on('click', '.TestAllNewsSelectorExtensionSelectorMA', function(e) {
     var elm = $(e.target).closest('.TestAllNewsSelectorExtensionSelectorMA');
     var _type = elm.attr('data-set-type');
     var selector = $('.InputExtensionSelectorMA[data-set-type=' + _type + ']').val();
-    selector = $xTo$(selector);
     if(_type == "ADDRESS") {
         $.each($(selector), function () {
             $(this).addClass("BorderInspectExtensionSelectorMA");
         });
     }else{
         var selector_address = $('.InputExtensionSelectorMA[data-set-type=ADDRESS]').val();
-        selector_address = $xTo$(selector_address);
         $.each($(selector_address), function () {
             $.each($(this).find(selector), function () {
                 if(_type != "THUMBNAIL"){
@@ -617,64 +685,68 @@ $(document).on('click', '.TestNewsSelectorExtensionSelectorMA', function(e) {
     var elm = $(e.target).closest('.TestNewsSelectorExtensionSelectorMA');
     var _type = elm.attr('data-set-type');
     var selector = $('.InputExtensionSelectorMA[data-set-type=' + _type + ']').val();
-    selector = $xTo$(selector);
     if(_type != "IMAGE"){
         $.each($(selector), function () {
             $(this).addClass("BorderInspectExtensionSelectorMA");
         });
         if(_type == "BODY"){
             $.each($("input.BodyExcludeInputExtensionSelectorMA"), function(){
-                $($xTo$($(this).val())).addClass('ExcludeBorderInspectExtensionSelectorMA');
+                $($(this).val()).addClass('ExcludeBorderInspectExtensionSelectorMA');
             });
         }
     }else{
-        var __l = $(selector).split(">");
+        var __l = selector.split(">");
         var __a = "";
         var html = "";
         for(var i = 0; i < __l.length - 1; i++){
             __a = i < __l.length - 2 ? ">" : "";
             html += __l[i] + __a;
         }
-        html = $xTo$(html);
         $(html).find('img').addClass('ImageBorderInspectExtensionSelectorMA');
     }
 });
 
 $(document).on('click', '.ChangeSelectorExtensionSelectorMA', function(e) {
     var elm = $(e.target).closest('.ChangeSelectorExtensionSelectorMA');
+    var position = elm.attr('data-position');
     var action = elm.attr('data-action');
     var type = elm.closest('.DivChangeSelectorExtensionSelectorMA').attr('data-set-type');
     var __input = $('input.InputExtensionSelectorMA[data-set-type=' + type + ']');
     var path_input = __input.val();
     var path = __input.attr('data-path');
-    var __l = path_input.split("/");
+    var __l = path_input.split(">");
     var html = "";
     var i = 0;
     var __a = "";
     var __b = "";
 
-    if(action == "UNDO" || path_input == ""){
+    if(position == "UNDO" || path_input == ""){
         html = path
-    }else if(action == "BACK"){
-        for(i = 0; i < __l.length - 1; i++){
-            __a = i < __l.length - 2 ? "/" : "";
-            html += __l[i] + __a;
-        }
-        if(html.indexOf('@') == -1 && type == "ADDRESS"){
-            html = path_input;
+    }else if(position == "START"){
+        if(action == "BACK"){
+            for(i = 0; i < __l.length - 1; i++){
+                __a = i < __l.length - 2 ? ">" : "";
+                html += __l[i] + __a;
+            }
+        }else{
+            __a = path.split(path_input)[1];
+            __a = __a.split(">")[1];
+            __b = __a ? (">" + __a) : "";
+            html = path_input + __b
         }
     }else{
-        __a = path.split(path_input)[1];
-        if(__a[0] != "["){
-            __a = __a.split("/")[1];
-            __b = __a ? ("/" + __a) : "";
+        if(action == "BACK"){
+            for(i = 1; i < __l.length; i++){
+                __a = i < __l.length - 1 ? ">" : "";
+                html += __l[i] + __a;
+            }
         }else{
-            __b = __a.split("/")[0] + '/' + __a.split("/")[1];
+            __a = path.split(path_input)[0];
+            __a = __a.split(">");
+            __a = __a[__a.length - 2];
+            __b = __a ? (__a + ">") : "";
+            html = __b + path_input
         }
-        html = path_input + __b
-    }
-    if(type == "ADDRESS"){
-        html = remove_last_bracket(html);
     }
     __input.val(html);
 });
