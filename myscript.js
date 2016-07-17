@@ -164,8 +164,8 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                     '</div>' +
                     '<div class="DivRowExtensionSelectorMA">' +
                         '<div class="DivInputExtensionSelectorMA">' +
-                            '<button class="ButtonExtensionSelectorMA ButtonInfoExtensionSelectorMA ButtonCopyJsonAllNewsStylesToClipboard">Copy</button>' +
-                            '<input class="InputCopyJsonAllNewsStylesToClipboard InputExtensionSelectorMA" id="InputCopyJsonAllNewsStylesToClipboard" type="text">' +
+                            '<button class="ButtonExtensionSelectorMA ButtonInfoExtensionSelectorMA ButtonCopyJsonAllNewsStylesToClipboard" style="position: absolute">Copy</button>' +
+                            '<input class="InputCopyJsonAllNewsStylesToClipboard" style="height: 5px;margin-top: 5px; margin-right: 5px; width: 5px;" id="InputCopyJsonAllNewsStylesToClipboard" type="text">' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -338,8 +338,8 @@ var __form = '<div class="MainDivExtensionSelectorMA RightMainDivExtensionSelect
                     '</div>' +
                     '<div class="DivRowExtensionSelectorMA">' +
                         '<div class="DivInputExtensionSelectorMA">' +
-                            '<button class="ButtonExtensionSelectorMA ButtonInfoExtensionSelectorMA ButtonCopyJsonNewsStylesToClipboard">Copy</button>' +
-                            '<input class="InputCopyJsonNewsStylesToClipboard InputExtensionSelectorMA" id="InputCopyJsonNewsStylesToClipboard" type="text">' +
+                            '<button class="ButtonExtensionSelectorMA ButtonInfoExtensionSelectorMA ButtonCopyJsonNewsStylesToClipboard" style="position: absolute;">Copy</button>' +
+                            '<input class="InputCopyJsonNewsStylesToClipboard" style="height: 5px;margin-top: 5px; margin-right: 5px; width: 5px;" id="InputCopyJsonNewsStylesToClipboard" type="text">' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -349,6 +349,29 @@ var __main = '<button class="ButtonExtensionSelectorMA NoExtension ButtonSuccess
     '<div class="FixDivExtensionSelectorMA NoExtension RightFixDivExtensionSelectorMA"><div class="SettingDivExtensionSelectorMA">' + __close + __select + __float + '</div>' + __form + '</div>';
 
 $('body').append(__main);
+
+
+function copy_to_clipboard(elem) {
+    var origSelectionStart, origSelectionEnd;
+    origSelectionStart = elem.selectionStart;
+    origSelectionEnd = elem.selectionEnd;
+    var currentFocus = document.activeElement;
+    elem.focus();
+    elem.setSelectionRange(0, elem.value.length);
+
+    var succeed;
+    try {
+        succeed = document.execCommand("copy");
+    } catch(e) {
+        succeed = false;
+    }
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+
+    elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    return succeed;
+}
 
 $(document).on('click', '.ChangeFloatExtensionSelectorMA', function(e){
     var elm = $(e.target).closest('.ChangeFloatExtensionSelectorMA');
@@ -436,9 +459,12 @@ $(document).on('click', function(e) {
                 var __nth_of_type = 1;
                 if (sameTagSiblings.length > 1) {
                     var allSiblings = parent.children();
-                    for(var __i = 0; __i < allSiblings.length ; __i++){
-                        if(allSiblings[__i] == realNode){
-                            __nth_of_type = __i;
+                    for(var __i = 0; __i < allSiblings.length ; __i++) {
+                        if (allSiblings[__i].localName.toLowerCase() == realNode.localName.toLowerCase()){
+                            if (allSiblings[__i] == realNode) {
+                                break;
+                            }
+                            __nth_of_type += 1;
                         }
                     }
                     if (__nth_of_type > 1) {
@@ -498,28 +524,6 @@ $(document).on('click', function(e) {
         remove_borders();
     }
 });
-
-function copy_to_clipboard(elem) {
-    var origSelectionStart, origSelectionEnd;
-    origSelectionStart = elem.selectionStart;
-    origSelectionEnd = elem.selectionEnd;
-    var currentFocus = document.activeElement;
-    elem.focus();
-    elem.setSelectionRange(0, elem.value.length);
-
-    var succeed;
-    try {
-        succeed = document.execCommand("copy");
-    } catch(e) {
-        succeed = false;
-    }
-    if (currentFocus && typeof currentFocus.focus === "function") {
-        currentFocus.focus();
-    }
-
-    elem.setSelectionRange(origSelectionStart, origSelectionEnd);
-    return succeed;
-}
 
 $(document).on('click', '.ButtonCopyJsonAllNewsStylesToClipboard', function(e) {
     var extract_link = $('input.ExtractExtensionSelectorMA[data-set-type=LINK]').prop('checked');
@@ -775,4 +779,5 @@ $(document).on('click', '.ChangeSelectorExtensionSelectorMA', function(e) {
         }
     }
     __input.val(html);
+    elm.closest('.DivRowExtensionSelectorMA').find('.TestSelectorExtensionSelectorMA').click();
 });
