@@ -1,6 +1,6 @@
 {
-  "name":"Inject DOM",
-  "description":"http://stackoverflow.com/questions/14068879",
+  "name":"Selector",
+  "description":"Selector",
   "version":"1",
   "manifest_version":2,
   "content_scripts": [
