@@ -427,96 +427,102 @@ $(document).on('click', '.SetButtonExtensionSelectorMA.ButtonDangerExtensionSele
     elm.removeClass('ButtonDangerExtensionSelectorMA').addClass('ButtonSuccessExtensionSelectorMA');
 });
 
-$(document).on('click', function(e) {
-    if(__permission && !$(e.target).closest(".NoExtension").hasClass("NoExtension")){
-        e.preventDefault();
-        var path, node = $(e.target);
-        var __con = true;
-        while (node.length && __con) {
-            var realNode = node[0], name = realNode.localName;
-            if (!name || name == "body" || name == "html") break;
-            name = name.toLowerCase();
-            var _class = node[0].className;
-            var _id = node[0].id;
+function get_address(__e){
+    var path, node = __e;
+    var __con = true;
+    while (node.length && __con) {
+        var realNode = node[0], name = realNode.localName;
+        if (!name || name == "body" || name == "html") break;
+        name = name.toLowerCase();
+        var _class = node[0].className;
+        var _id = node[0].id;
 
-            var parent = node.parent();
-            var __nth_of_type__ = false;
-            _class = _class.replace(/ /g, '.').replace(".BorderInspectExtensionSelectorMA", "").replace("BorderInspectExtensionSelectorMA", "");
-            var _class_list = _class.split('.');
-            _class = "";
-            for(var j = 0; j < _class_list.length ; j++){
-                if(_class_list[j] != "" && _class_list[j] != " "){
-                    if(j == 0)
-                        _class += _class_list[j];
-                    else
-                        _class += '.' + _class_list[j];
-                }
+        var parent = node.parent();
+        var __nth_of_type__ = false;
+        _class = _class.replace(/ /g, '.').replace(".BorderInspectExtensionSelectorMA", "").replace("BorderInspectExtensionSelectorMA", "");
+        var _class_list = _class.split('.');
+        _class = "";
+        for(var j = 0; j < _class_list.length ; j++){
+            if(_class_list[j] != "" && _class_list[j] != " "){
+                if(j == 0)
+                    _class += _class_list[j];
+                else
+                    _class += '.' + _class_list[j];
             }
-            if(_id != "" && $("[id=" + _id + "]").length > 1)
-                _id = "";
-            if (_class == "" && _id == "") {
-                var sameTagSiblings = parent.children(name);
-                var __nth_of_type = 1;
-                if (sameTagSiblings.length > 1) {
-                    var allSiblings = parent.children();
-                    for(var __i = 0; __i < allSiblings.length ; __i++) {
-                        if (allSiblings[__i].localName.toLowerCase() == realNode.localName.toLowerCase()){
-                            if (allSiblings[__i] == realNode) {
-                                break;
-                            }
-                            __nth_of_type += 1;
+        }
+        if(_id != "" && $("[id=" + _id + "]").length > 1)
+            _id = "";
+        if (_class == "" && _id == "") {
+            var sameTagSiblings = parent.children(name);
+            var __nth_of_type = 1;
+            if (sameTagSiblings.length > 1) {
+                var allSiblings = parent.children();
+                for(var __i = 0; __i < allSiblings.length ; __i++) {
+                    if (allSiblings[__i].localName.toLowerCase() == realNode.localName.toLowerCase()){
+                        if (allSiblings[__i] == realNode) {
+                            break;
                         }
-                    }
-                    if (__nth_of_type > 1) {
-                        __nth_of_type__ = true;
-                        name += ':nth-of-type(' + __nth_of_type + ')';
+                        __nth_of_type += 1;
                     }
                 }
-            }else{
-                if(_id != ""){
-                    name += '#' + _id;
-                    if(__set_type != "LINK" && __set_type != "THUMBNAIL" && __set_type != "TITLE" && __set_type != "SUMMARY")
-                        __con = false;
-                }else{
-                    name += '.' + _class;
+                if (__nth_of_type > 1) {
+                    __nth_of_type__ = true;
+                    name += ':nth-of-type(' + __nth_of_type + ')';
                 }
             }
-            if(__nth_of_type__){
-                path = '__<<__' + name + '>' + (path ? path : '');
+        }else{
+            if(_id != ""){
+                name += '#' + _id;
+                if(__set_type != "LINK" && __set_type != "THUMBNAIL" && __set_type != "TITLE" && __set_type != "SUMMARY")
+                    __con = false;
             }else{
-                path = name + (path ? '>' + path : '');
+                name += '.' + _class;
             }
-            node = parent;
         }
-        var __address = $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val();
-        if(__set_type == "LINK" || __set_type == "THUMBNAIL" || __set_type == "TITLE" || __set_type == "SUMMARY"){
-            if(__address == path){
-                var __l = __address.split(">");
-                var __a = "";
-                var html = "";
-                for(var i = 0; i < __l.length - 1; i++){
-                    __a = i < __l.length - 2 ? ">" : "";
-                    html += __l[i] + __a;
-                }
-                $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val(html);
-                __address = html;
-            }
-            var del_selector = $('.DivChangeSelectorExtensionSelectorMA[data-set-type=ADDRESS]').find(".DelLastAttrSelectorExtensionSelectorMA").attr('data-value');
-            __address = __address + del_selector;
-            var __path = path.split(__address)[1];
-            path = __path ? __path : path;
-            if(path[0] == '>'){
-                path = path.substring(1, path.length);
-            }
-            if(path.substring(0, 6) == "__<<__")
-                path = path.substring(6, path.length);
+        if(__nth_of_type__){
+            path = '__<<__' + name + '>' + (path ? path : '');
+        }else{
+            path = name + (path ? '>' + path : '');
         }
+        node = parent;
+    }
+    var __address = $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val();
+    if(__set_type == "LINK" || __set_type == "THUMBNAIL" || __set_type == "TITLE" || __set_type == "SUMMARY"){
+        if(__address == path){
+            var __l = __address.split(">");
+            var __a = "";
+            var html = "";
+            for(var i = 0; i < __l.length - 1; i++){
+                __a = i < __l.length - 2 ? ">" : "";
+                html += __l[i] + __a;
+            }
+            $("input.InputExtensionSelectorMA[data-set-type=ADDRESS]").val(html);
+            __address = html;
+        }
+        var del_selector = $('.DivChangeSelectorExtensionSelectorMA[data-set-type=ADDRESS]').find(".DelLastAttrSelectorExtensionSelectorMA").attr('data-value');
+        __address = __address + del_selector;
+        var __path = path.split(__address)[1];
+        path = __path ? __path : path;
         if(path[0] == '>'){
             path = path.substring(1, path.length);
         }
-        if(path[path.length - 1] == '>'){
-            path = path.substring(0, path.length - 1);
-        }
+        if(path.substring(0, 6) == "__<<__")
+            path = path.substring(6, path.length);
+    }
+    if(path[0] == '>'){
+        path = path.substring(1, path.length);
+    }
+    if(path[path.length - 1] == '>'){
+        path = path.substring(0, path.length - 1);
+    }
+    return path
+}
+
+
+$(document).on('click', function(e) {
+    e.preventDefault();
+    if(__permission && !$(e.target).closest(".NoExtension").hasClass("NoExtension")){
+        var path = get_address($(e.target));
         $("input.InputExtensionSelectorMA[data-set-type=" + __set_type + "]").val(path).attr('data-path', path);
         __permission = false;
         __set_type = null;
@@ -642,10 +648,10 @@ $(document).on('click', '.ButtonCloseExtensionSelectorMA', function(e) {
 });
 
 function add_border_class(__this){
-    __this.attr('data-class', "BorderInspectExtensionSelectorMA");
+    __this.addClass("BorderInspectExtensionSelectorMA").attr('data-class', "BorderInspectExtensionSelectorMA");
 }
 function add_image_border_class(__this){
-    __this.addClass("BorderInspectExtensionSelectorMA").attr('data-class', "BorderInspectExtensionSelectorMA");
+    __this.addClass("ImageBorderInspectExtensionSelectorMA").attr('data-class', "ImageBorderInspectExtensionSelectorMA");
 }
 function add_exclude_border_class(__this){
     __this.addClass("ExcludeBorderInspectExtensionSelectorMA").attr('data-class', "ExcludeBorderInspectExtensionSelectorMA");
@@ -768,6 +774,8 @@ $(document).on('click', '.ChangeSelectorExtensionSelectorMA', function(e) {
         if(action == "BACK"){
             for(i = 1; i < __l.length; i++){
                 __a = i < __l.length - 1 ? ">" : "";
+                //if(__l[i].substring(0, 6) == "__<<__")
+                //    __l[i] = __l[i].substring(6, path.length);
                 html += __l[i] + __a;
             }
         }else{
@@ -775,7 +783,20 @@ $(document).on('click', '.ChangeSelectorExtensionSelectorMA', function(e) {
             __a = __a.split(">");
             __a = __a[__a.length - 2];
             __b = __a ? (__a + ">") : "";
-            html = __b + path_input
+            if(__b == ""){
+                var _t = $(__l[0]);
+                var ___id = _t.attr('id');
+                _t.removeAttr('id');
+                __l[0] = get_address(_t);
+                for(i = 0; i < __l.length; i++){
+                    __a = i < __l.length - 1 ? ">" : "";
+                    html += __l[i] + __a;
+                }
+                __input.attr('data-path', html);
+                _t.attr('id', ___id);
+            }else{
+                html = __b + path_input
+            }
         }
     }
     __input.val(html);
