@@ -520,8 +520,8 @@ function get_address(__e){
 
 
 $(document).on('click', function(e) {
-    e.preventDefault();
     if(__permission && !$(e.target).closest(".NoExtension").hasClass("NoExtension")){
+        e.preventDefault();
         var path = get_address($(e.target));
         $("input.InputExtensionSelectorMA[data-set-type=" + __set_type + "]").val(path).attr('data-path', path);
         __permission = false;
